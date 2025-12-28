@@ -3,28 +3,52 @@ import Navbar from './components/Navbar';
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  // this is the array that holds the input value
+  const [tasks, setTasks] = useState(["eat breakfast", "Take dog","Take a shower"]);
+  // this is the input task
+  const [newTask, setNewTask] = useState("");
+
+  const handleAdd = () =>{
+
+  }
+  const moveTaskUp = (index) =>{
+    
+  }
+  const moveTaskDown = (index) =>{
+    
+  }
+
+  const deleteTask = (index) =>{
+
+  }
+  const handleChange = (e) =>{
+    setNewTask(e.target.value)
+  }
 
   return (
     <>
     <Navbar/>
-  <div className="container mx-auto bg-violet-100 p-4 my-5 rounded-xl min-h-[80vh] ">
-    <div className="addTodo">
-      <h2 className='text-xl font-bold' >Add a Todo</h2>
-      <input className='bg-white' type="text" />
-      <button className='bg-violet-600 hover:bg-violet-800 text-white py-1 px-3 rounded-md mx-5 text-sm font-bold '>Add</button>
+   
+  <div className="to-do-list my-8 flex flex-col items-center ">
+    <h1 className='text-5xl my-8 font-bold' >To-Do-List</h1>
+    <div className="input">
+     <input className='  bg-white w-80 py-2 px-2 text-black rounded-md text-xl' type="text" placeholder='Enter a task....' value={newTask} onChange={handleChange}/>
+     <button className='px-5 py-2 text-xl font-bold text-white mx-3 rounded-md bg-green-500 cursor-pointer'>Add</button>
     </div>
 
-    <h2 className=' text-xl font-bold' >Your Todos</h2>
-    <div className="todo">
-      <div className="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, laborum!</div>
-      <div className="button">
-        <button className='bg-violet-600 hover:bg-violet-800 text-white py-1 px-3 rounded-md mx-3 text-sm font-bold '>Edit</button>
-        <button className='bg-violet-600 hover:bg-violet-800 text-white py-1 px-3 rounded-md mx-3 text-sm font-bold '>Delete</button>
-      </div>
+    <ol className='my-5'>
+      {tasks.map((task, index) =>
+        <li className='my-3 px-5 w-150 bg-white text-black rounded-md py-3 flex justify-center  ' key={index} >
+          <span className=' font-bold text-[26px] flex-1'>{task}</span>
+          <button onClick={()=> deleteTask(index)} className='px-4 py-1 text-base  text-white font-bold mx-3 rounded-md cursor-pointer bg-red-500 ml-30'>Delete</button>
+          <button onClick={()=> moveTaskUp(index)} className='text-2xl rounded-md mx-1 bg-blue-200'>👆</button>
+          <button onClick={()=> moveTaskDown(index)} className='text-2xl rounded-md mx-1 bg-blue-200'>👇</button>
+        </li>
+      )}
+    </ol>
 
-    </div>
   </div>
+      
     </>
   )
 }
