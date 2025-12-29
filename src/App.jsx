@@ -4,23 +4,42 @@ import Navbar from './components/Navbar';
 
 function App() {
   // this is the array that holds the input value
-  const [tasks, setTasks] = useState(["eat breakfast", "Take dog","Take a shower"]);
+  const [tasks, setTasks] = useState([]);
   // this is the input task
   const [newTask, setNewTask] = useState("");
 
-  const handleAdd = () =>{
-
+  function addTask(){
+    if (newTask.trim() !== "") {
+      setTasks(t =>[...t, newTask]);
+      setNewTask("")
+    }
   }
-  const moveTaskUp = (index) =>{
+
+  function moveTaskUp(index){
+    if (index > 0){
+      const updatedTasks = [...tasks];
+      [updatedTasks[index], updatedTasks[index -1]] = 
+      [updatedTasks[index - 1], updatedTasks[index]]
+      setTasks(updatedTasks)
+    }
     
   }
-  const moveTaskDown = (index) =>{
+
+ function moveTaskDown (index){
+      if (index < tasks.length -1){
+      const updatedTasks = [...tasks];
+      [updatedTasks[index], updatedTasks[index + 1]] = 
+      [updatedTasks[index + 1], updatedTasks[index]]
+      setTasks(updatedTasks)
+    }
     
   }
 
-  const deleteTask = (index) =>{
-
+  function deleteTask (index){
+    const updatedTasks = tasks.filter((_, i) => i !== index);
+    setTasks(updatedTasks)
   }
+
   const handleChange = (e) =>{
     setNewTask(e.target.value)
   }
@@ -30,10 +49,10 @@ function App() {
     <Navbar/>
    
   <div className="to-do-list my-8 flex flex-col items-center ">
-    <h1 className='text-5xl my-8 font-bold' >To-Do-List</h1>
+    <h1 className='text-6xl my-10 font-bold'>To-Do-List</h1>
     <div className="input">
-     <input className='  bg-white w-80 py-2 px-2 text-black rounded-md text-xl' type="text" placeholder='Enter a task....' value={newTask} onChange={handleChange}/>
-     <button className='px-5 py-2 text-xl font-bold text-white mx-3 rounded-md bg-green-500 cursor-pointer'>Add</button>
+     <input className='  bg-white w-80 py-2 px-3 text-black rounded-md text-xl' type="text" placeholder='Enter a task....' value={newTask} onChange={handleChange}/>
+     <button onClick={addTask} className='px-5 py-2 text-xl font-bold text-white mx-3 rounded-md bg-green-500 cursor-pointer'>Add</button>
     </div>
 
     <ol className='my-5'>
