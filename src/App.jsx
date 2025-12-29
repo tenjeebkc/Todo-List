@@ -21,8 +21,7 @@ function App() {
       [updatedTasks[index], updatedTasks[index -1]] = 
       [updatedTasks[index - 1], updatedTasks[index]]
       setTasks(updatedTasks)
-    }
-    
+    } 
   }
 
  function moveTaskDown (index){
@@ -49,19 +48,19 @@ function App() {
     <Navbar/>
    
   <div className="to-do-list my-8 flex flex-col items-center ">
-    <h1 className='text-6xl my-10 font-bold'>To-Do-List</h1>
-    <div className="input">
-     <input className='  bg-white w-80 py-2 px-3 text-black rounded-md text-xl' type="text" placeholder='Enter a task....' value={newTask} onChange={handleChange}/>
-     <button onClick={addTask} className='px-5 py-2 text-xl font-bold text-white mx-3 rounded-md bg-green-500 cursor-pointer'>Add</button>
+    <h1 className='md:text-6xl text-4xl my-10 font-bold'>To-Do-List</h1>
+    <div className="input md:flex md:flex-row flex items-center flex-col">
+     <input className='  bg-white md:w-80 w-75 py-2 px-3 text-black rounded-md md:text-xl' type="text" placeholder='Enter a task....' value={newTask} onChange={handleChange}/>
+     <button onClick={addTask} className='w-20 py-2 text-xl md:my-0 mt-4 font-bold  text-white mx-3 rounded-md bg-green-500 cursor-pointer'>Add</button>
     </div>
 
-    <ol className='my-5'>
+    <ol className='my-6'>
       {tasks.map((task, index) =>
-        <li className='my-3 px-5 w-150 bg-white text-black rounded-md py-3 flex justify-center  ' key={index} >
-          <span className=' font-bold text-[26px] flex-1'>{task}</span>
-          <button onClick={()=> deleteTask(index)} className='px-4 py-1 text-base  text-white font-bold mx-3 rounded-md cursor-pointer bg-red-500 ml-30'>Delete</button>
-          <button onClick={()=> moveTaskUp(index)} className='text-2xl rounded-md mx-1 bg-blue-200'>👆</button>
-          <button onClick={()=> moveTaskDown(index)} className='text-2xl rounded-md mx-1 bg-blue-200'>👇</button>
+        <li className='my-3 px-2 w-80 md:w-150 bg-white text-black rounded-md md:py-3 py-2 flex justify-center' key={index} >
+          <span className=' font-bold text-[20px] md:text-[26px] flex-1'>{task}</span>
+          <button onClick={()=> deleteTask(index)} className='px-2 py-1  text-white font-bold mx-1 rounded-md cursor-pointer bg-red-500 md:ml-30'>Delete</button>
+          <button onClick={()=> moveTaskUp(index)} className='md:text-2xl rounded-md mx-1 bg-blue-200'>👆</button>
+          <button onClick={()=> moveTaskDown(index)} className='md:text-2xl rounded-md mx-1 bg-blue-200'>👇</button>
         </li>
       )}
     </ol>

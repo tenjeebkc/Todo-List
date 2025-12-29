@@ -4,9 +4,9 @@ const Navbar = () => {
   return (
     <div className="nav flex bg-black text-white p-4 justify-between ">
         <div className="logo">
-        <span className='font-bold mx-6 ' >iTask</span>
+        <span className='font-bold mx-3 ' >iTask</span>
         </div>
-        <ul className='flex gap-5 mx-6 ' > 
+        <ul className='flex gap-4 mx-1 ' > 
             <li className='cursor-pointer transition-all hover:font-bold'>Home</li>
             <li className='cursor-pointer transition-all hover:font-bold'>Tasks</li>
         </ul>
