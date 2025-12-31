@@ -17,7 +17,7 @@ function App() {
 
   function moveTaskUp(index){
     if (index > 0){
-      const updatedTasks = [...tasks];
+      const updatedTasks = [...tasks]; // Make a copy of tasks array
       [updatedTasks[index], updatedTasks[index -1]] = 
       [updatedTasks[index - 1], updatedTasks[index]]
       setTasks(updatedTasks)
@@ -35,7 +35,7 @@ function App() {
   }
 
   function deleteTask (index){
-    const updatedTasks = tasks.filter((_, i) => i !== index);
+    const updatedTasks = tasks.filter((_, i) => i !== index);  // we didn't made a copy here becuase filter returns new array
     setTasks(updatedTasks)
   }
 
@@ -50,7 +50,7 @@ function App() {
   <div className="to-do-list my-8 flex flex-col items-center ">
     <h1 className='md:text-6xl text-4xl my-10 font-bold'>To-Do-List</h1>
     <div className="input md:flex md:flex-row flex items-center flex-col">
-     <input className='  bg-white md:w-80 w-75 py-2 px-3 text-black rounded-md md:text-xl' type="text" placeholder='Enter a task....' value={newTask} onChange={handleChange}/>
+     <input className='bg-white md:w-80 w-75 py-2 px-3 text-black rounded-md md:text-xl' type="text" placeholder='Enter a task....' value={newTask} onChange={handleChange}/>
      <button onClick={addTask} className='w-20 py-2 text-xl md:my-0 mt-4 font-bold  text-white mx-3 rounded-md bg-green-500 cursor-pointer'>Add</button>
     </div>
 
